@@ -90,3 +90,5 @@ return fcerror.replace(/.{1}/g, (item)=> {
 function get_fcerror(text) {
     return  Math.abs(text.hashCode())+"";
 }
+// console.log(get_fcerror("6410223Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36"))
+// console.log(get_fcerror("6410223Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36"))

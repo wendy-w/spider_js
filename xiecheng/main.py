@@ -16,7 +16,7 @@ os.environ['EXECJS_RUNTIME'] = 'Node'
 
 class XieCheng():
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36',
+        'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36",
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
         'Accept-Language': 'zh-CN,zh;q=0.9',
         'Cache-Control': '0',
@@ -55,7 +55,13 @@ class XieCheng():
 
     def get_cookies(self,text):
         with open('cookies.js',encoding='utf-8') as fr:
-            return execjs.compile( fr.read()).call('get_cookies',text)
+            print(text)
+            cookies = execjs.compile(fr.read()).call('get_cookies', text)
+            # cookies['fcerror']='772098891'
+            # cookies['_zQdjfing']='3165bb3165bb3365ac4ea08465b02e3a923a3a923a65b02e1336fa'
+            print(cookies)
+
+            return cookies
 
     def __del__(self):
         self.session.close()
@@ -65,6 +71,7 @@ class XieCheng():
         def __decorator(*args, **kwargs):
             eleven_js = fun(*args, **kwargs)
             try:
+                print(eleven_js)
                 b64_eleven_js = base64encode(eleven_js)
                 b64_url = base64encode(self.url)
                 url = 'http://127.0.0.1:3000/get_eleven'
@@ -94,6 +101,7 @@ class XieCheng():
 
     def get_room(self):
         eleven = self.get_eleven()
+        print(eleven)
         url = 'https://hotels.ctrip.com/Domestic/tool/AjaxHote1RoomListForDetai1.aspx'
         params = {'psid': '',
                   'MasterHotelID': self.roomid,
@@ -158,7 +166,9 @@ class XieCheng():
 if __name__ == '__main__':
     # roomid=7067729
     # cityid = 2  # 上海
-    roomid = 6410223
-    cityid = 1  # 北京
+    # roomid = 6410223
+    # cityid = 1 # 北京
+    roomid = 457242
+    cityid = 1 # 北京
 
     XieCheng(roomid, cityid=cityid).run()
