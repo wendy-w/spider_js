@@ -1,4 +1,8 @@
 # 携程房价抓取
+#### 2019-04-23携程新反爬规则
+* cookie新增一个hoteluuid,表示当前浏览器指纹。
+
+![](https://i.imgur.com/gQaejK7.jpg)
 
 ##### 运行方式
 * 启动server.js服务

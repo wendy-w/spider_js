@@ -165,10 +165,10 @@ class XieCheng():
 
 
 if __name__ == '__main__':
-    # roomid=7067729
-    # cityid = 2  # 上海
-    roomid = 6410223
-    cityid = 1 # 北京
+    roomid=7067729
+    cityid = 2  # 上海
+    # roomid = 6410223
+    # cityid = 1 # 北京
     # roomid = 457242
     # cityid = 1 # 北京
 
