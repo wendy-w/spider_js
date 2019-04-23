@@ -39,6 +39,7 @@ class XieCheng():
         url = 'https://hotels.ctrip.com/domestic/hotel/{}.html'.format(roomid)
         print(url)
         self.session = requests.Session()
+        # self.session.proxies={'https':'socks5://39.97.77.27:1080','http':'socks5://39.97.77.27:1080'}
         self.session.headers.update(self.headers)
         self.session.verify = False
         self.address = ''.join(
@@ -46,6 +47,7 @@ class XieCheng():
              item.strip()])
 
         self.session.cookies.update(self.get_cookies(str(roomid)+self.headers['User-Agent']))
+        self.session.cookies.update({'hoteluuid':'FLPsulDO87oZ2MnZ'})
         self.session.headers.update({'Referer': url})
         self.url = url
         self.call_back_value = 'CASrYVcraFQgjGciKk'
@@ -57,8 +59,6 @@ class XieCheng():
         with open('cookies.js',encoding='utf-8') as fr:
             print(text)
             cookies = execjs.compile(fr.read()).call('get_cookies', text)
-            # cookies['fcerror']='772098891'
-            # cookies['_zQdjfing']='3165bb3165bb3365ac4ea08465b02e3a923a3a923a65b02e1336fa'
             print(cookies)
 
             return cookies
@@ -144,6 +144,7 @@ class XieCheng():
         response = self.get_room()
         # print(response.json())
         b64_font = base64encode(json.dumps(response.json()))
+        print(b64_font)
         html_content = base64decode(self.font_js.call('parser', b64_font))
         # html_content=response.json()['html'] 直接使用返回的html，价格不对。
         self.parser(html_content)
@@ -166,9 +167,9 @@ class XieCheng():
 if __name__ == '__main__':
     # roomid=7067729
     # cityid = 2  # 上海
-    # roomid = 6410223
-    # cityid = 1 # 北京
-    roomid = 457242
+    roomid = 6410223
     cityid = 1 # 北京
+    # roomid = 457242
+    # cityid = 1 # 北京
 
     XieCheng(roomid, cityid=cityid).run()
