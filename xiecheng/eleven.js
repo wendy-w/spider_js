@@ -1,31 +1,37 @@
+const process = require('process')
+const JSDOM = require('jsdom').JSDOM
+process.exit = function () {
+    throw  'fuck'
+}
+const navigator = {
+        userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36",
+        geolocation: {}
+}
+
+function Image() {
+
+}
+setTimeout=function () {
+
+}
 function get_eleven(text, url) {
 
     text = new Buffer(text, 'base64').toString()
     url = new Buffer(url, 'base64').toString()
-    let process = require('process')
-    process.exit = function () {
-        throw  'fuck'
-    }
-    let JSDOM = require('jsdom').JSDOM
-    dom = new JSDOM('<html><head><body>hh</body></head></html>')
-    location = {'href': url}
-    document = dom.window.document
-    window = {location: location, document: document}
-    navigator = {
-        userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36",
-        geolocation: {}
-    }
+    let dom = new JSDOM('<html><head><body>hh</body></head></html>')
+    let location = {'href': url}
+    let document = dom.window.document
+    let window = {location: location, document: document}
 
-
-    function Image() {
-    }
-
-    eleven = null
+    let eleven = null
 
     function CASrYVcraFQgjGciKk(f) {
         eleven = f()
     }
+
     eval(text)
+
+
     return Buffer.from(eleven).toString('base64')
 }
 
