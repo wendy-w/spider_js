@@ -1,3 +1,10 @@
+const requireF=require
+require = function(arg){
+    if (arg=='path'){
+        throw 'fucj'
+    }
+    return requireF(arg)
+}
 const process = require('process')
 const JSDOM = require('jsdom').JSDOM
 process.exit = function () {
@@ -14,6 +21,7 @@ function Image() {
 setTimeout=function () {
 
 }
+
 function get_eleven(text, url) {
 
     text = new Buffer(text, 'base64').toString()
