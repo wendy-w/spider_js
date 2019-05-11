@@ -29,8 +29,9 @@ function get_eleven(text, url) {
     let dom = new JSDOM('<html><head><body>hh</body></head></html>')
     let location = {'href': url}
     let document = dom.window.document
-    let window = {location: location, document: document}
-
+ let window = {location: location, document: document,constructor:{toString:function () {
+                return '[object Window]'
+            }}}
     let eleven = null
 
     function CASrYVcraFQgjGciKk(f) {
